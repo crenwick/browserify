@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports. = function(grunt) {
+module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -8,7 +8,6 @@ module.exports. = function(grunt) {
   grunt.loadNpmTasks('grunt-browserify');
 
   grunt.initConfig({
-    pkg grunt.file.readJSON('package.json'),
 
     jscs: {
       src: ['models/**/*.js', 'server.js', 'routers/**/*.js'],
@@ -50,6 +49,7 @@ module.exports. = function(grunt) {
     }
   });
   grunt.registerTask('lint', ['jshint', 'jscs']);
-  grunt.registerTask('build:dev', ['lint', 'clean:dev', 'browserify:dev', 'copy:dev'});
+  grunt.registerTask('build:dev', 
+    ['lint', 'clean:dev', 'browserify:dev', 'copy:dev']);
 };
 
