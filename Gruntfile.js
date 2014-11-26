@@ -10,7 +10,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     jscs: {
-      src: ['models/**/*.js', 'server.js', 'routers/**/*.js'],
+      src: ['app/js/**/*.js', 'server.js'],
       options: {
         config: '.jscsrc'
       }
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
       options: {
         node: true
       },
-      src: ['models/**/*.js', 'server.js', 'routers/**/*.js']
+      src: ['models/**/*.js', 'server.js', 'routers/**/*.js', 'app/js/**/*.js']
     },
 
     clean: {
@@ -41,8 +41,16 @@ module.exports = function(grunt) {
     browserify: {
       dev: {
         src: ['app/js/**/*.js'],
-        dest: 'test/test_bundle.js',
+        dest: 'build/bundle.js',
         options: {
+          transform: ['debowerify']
+        }
+      },
+      
+      test: {
+        src: ['test/client/**/*test.js'],
+        dest: 'test/test_bundle.js',
+        options:{
           transform: ['debowerify']
         }
       }
@@ -50,6 +58,6 @@ module.exports = function(grunt) {
   });
   grunt.registerTask('lint', ['jshint', 'jscs']);
   grunt.registerTask('build:dev', 
-    ['lint', 'clean:dev', 'browserify:dev', 'copy:dev']);
+    ['clean:dev', 'lint', 'browserify:dev', 'copy:dev']);
 };
 
