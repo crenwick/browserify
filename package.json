@@ -21,6 +21,7 @@
     "grunt-contrib-copy": "^0.7.0",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-jscs": "^0.8.1",
+    "grunt-jsx": "^0.1.8",
     "mocha": "^2.0.1"
   }
 }
