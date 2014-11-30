@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 
     jshint: {
       options: {
-        node: true
+        jshintrc: '.jshintrc'
       },
       src: ['models/**/*.js', 'server.js', 'routers/**/*.js', 'app/js/**/*.js']
     },

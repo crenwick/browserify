@@ -1,4 +1,4 @@
-/*jshint strict: true, browser: true, node: true, indent: 2*/
+
 'use strict';
 
 var $ = require('jquery');
