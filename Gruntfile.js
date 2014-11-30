@@ -7,6 +7,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-simple-mocha');
 
   grunt.initConfig({
 
@@ -64,11 +65,15 @@ module.exports = function(grunt) {
           'build/sweetalert.css': 'bower_components/sweetalert/lib/sweet-alert.scss'
         }
       }
+    },
+
+    simplemocha: {
+      src: ['test/api/**/*.js']
     }
   });
 
   grunt.registerTask('lint', ['jshint', 'jscs']);
-  grunt.registerTask('build:dev', ['clean:dev', 'browserify:dev', 'copy:dev', 'sass']);
+  grunt.registerTask('build:dev', ['clean:dev', 'lint', 'browserify:dev', 'copy:dev', 'sass']);
   grunt.registerTask('build:test', ['browserify:test']);
-  grunt.registerTask('test', ['lint', 'build:dev', 'build:test']);
+  grunt.registerTask('test', ['build:dev', 'build:test', 'simplemocha']);
 };
