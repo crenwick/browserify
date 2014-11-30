@@ -70,4 +70,5 @@ module.exports = function(grunt) {
   grunt.registerTask('lint', ['jshint', 'jscs']);
   grunt.registerTask('build:dev', ['clean:dev', 'browserify:dev', 'copy:dev', 'sass']);
   grunt.registerTask('build:test', ['browserify:test']);
+  grunt.registerTask('test', ['lint', 'build:dev', 'build:test']);
 };
