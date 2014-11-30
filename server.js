@@ -2,6 +2,12 @@
 
 var express = require('express');
 var app = express();
+var count = 0;
+
+app.get('/count', function(req, res) {
+  count++;
+  res.json({count: count});
+});
 
 app.use(express.static(__dirname + '/build'));
 

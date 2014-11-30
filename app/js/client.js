@@ -6,8 +6,10 @@ require('sweetalert');
 
 $('#app').append('<p>Hello from javascript!</p>');
 $('#button').click(function() {
-  sweetAlert({
-    title: 'Nice!',
-    text: 'Heres my message!',
-    confirmButtonText: 'Cool' });
+  $.getJSON('http://localhost:3000/count', function(data) {
+    sweetAlert({
+      title: 'Nice!',
+      text: 'Current button count: ' + data.count,
+      confirmButtonText: 'Cool' });
+  });
 });
