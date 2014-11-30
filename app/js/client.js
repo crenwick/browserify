@@ -1,9 +1,13 @@
+/*jshint strict: true, browser: true, node: true, indent: 2*/
 'use strict';
 
 var $ = require('jquery');
-var sweetAlert = require('sweetalert')();
+require('sweetalert');
 
 $('#app').append('<p>Hello from javascript!</p>');
 $('#button').click(function() {
-  sweetAlert('Hello from this alert!');
+  sweetAlert({
+    title: 'Nice!',
+    text: 'Heres my message!',
+    confirmButtonText: 'Cool' });
 });
